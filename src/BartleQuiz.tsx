@@ -52,7 +52,7 @@ export function BartleQuiz() {
       <div className="quiz-container entry-container">
         <h1 className="entry-title">Teste de Bartle</h1>
         <p className="entry-subtitle">
-          Responda 18 perguntas para descobrir seu perfil de jogador segundo o modelo de Richard
+          Responda 30 perguntas para descobrir seu perfil de jogador segundo o modelo de Richard
           Bartle (Explorer, Achiever, Socializer ou Killer).
         </p>
         <div className="entry-form">

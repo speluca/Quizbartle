@@ -20,6 +20,8 @@ export interface ResponseRecord {
   q1: string;  q2: string;  q3: string;  q4: string;  q5: string;  q6: string;
   q7: string;  q8: string;  q9: string;  q10: string; q11: string; q12: string;
   q13: string; q14: string; q15: string; q16: string; q17: string; q18: string;
+  q19: string; q20: string; q21: string; q22: string; q23: string; q24: string;
+  q25: string; q26: string; q27: string; q28: string; q29: string; q30: string;
 }
 
 type InsertRecord = Omit<ResponseRecord, 'id' | 'timestamp'>;
@@ -43,24 +45,16 @@ export function buildRecord(
     pontos_a: scores.A,
     pontos_s: scores.S,
     pontos_k: scores.K,
-    q1:  answers[1]  ?? '',
-    q2:  answers[2]  ?? '',
-    q3:  answers[3]  ?? '',
-    q4:  answers[4]  ?? '',
-    q5:  answers[5]  ?? '',
-    q6:  answers[6]  ?? '',
-    q7:  answers[7]  ?? '',
-    q8:  answers[8]  ?? '',
-    q9:  answers[9]  ?? '',
-    q10: answers[10] ?? '',
-    q11: answers[11] ?? '',
-    q12: answers[12] ?? '',
-    q13: answers[13] ?? '',
-    q14: answers[14] ?? '',
-    q15: answers[15] ?? '',
-    q16: answers[16] ?? '',
-    q17: answers[17] ?? '',
-    q18: answers[18] ?? '',
+    q1:  answers[1]  ?? '', q2:  answers[2]  ?? '', q3:  answers[3]  ?? '',
+    q4:  answers[4]  ?? '', q5:  answers[5]  ?? '', q6:  answers[6]  ?? '',
+    q7:  answers[7]  ?? '', q8:  answers[8]  ?? '', q9:  answers[9]  ?? '',
+    q10: answers[10] ?? '', q11: answers[11] ?? '', q12: answers[12] ?? '',
+    q13: answers[13] ?? '', q14: answers[14] ?? '', q15: answers[15] ?? '',
+    q16: answers[16] ?? '', q17: answers[17] ?? '', q18: answers[18] ?? '',
+    q19: answers[19] ?? '', q20: answers[20] ?? '', q21: answers[21] ?? '',
+    q22: answers[22] ?? '', q23: answers[23] ?? '', q24: answers[24] ?? '',
+    q25: answers[25] ?? '', q26: answers[26] ?? '', q27: answers[27] ?? '',
+    q28: answers[28] ?? '', q29: answers[29] ?? '', q30: answers[30] ?? '',
   };
 }
 
@@ -154,6 +148,8 @@ export function exportAllCSV(records: ResponseRecord[]): void {
     'q1',  'q2',  'q3',  'q4',  'q5',  'q6',
     'q7',  'q8',  'q9',  'q10', 'q11', 'q12',
     'q13', 'q14', 'q15', 'q16', 'q17', 'q18',
+    'q19', 'q20', 'q21', 'q22', 'q23', 'q24',
+    'q25', 'q26', 'q27', 'q28', 'q29', 'q30',
   ] as const;
 
   const rows = records.map(r =>

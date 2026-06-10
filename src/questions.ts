@@ -11,12 +11,12 @@ export interface Question {
   options: [Option, Option];
 }
 
-// 18 questões — 3 por par, 6 pares (S×E, S×A, E×A, S×K, E×K, A×K)
-// Porcentagem = (pontos do perfil / 18) × 100 — soma sempre 100%
-export const TOTAL_QUESTIONS = 18;
+// 30 questões — 5 por par, 6 pares (S×E, S×A, E×A, S×K, E×K, A×K)
+// Porcentagem = (pontos do perfil / 30) × 100 — soma sempre 100%
+export const TOTAL_QUESTIONS = 30;
 
 export const questions: Question[] = [
-  // S vs E (originais 1, 6, 7)
+  // ── S vs E ──────────────────────────────────────────────────────────────
   {
     id: 1,
     text: 'Você se sente mais à vontade como jogador online:',
@@ -41,9 +41,25 @@ export const questions: Question[] = [
       { text: 'O número de áreas a explorar.', type: 'E' },
     ],
   },
-  // S vs A (originais 2, 3, 5)
   {
     id: 4,
+    text: 'O que é mais importante para você?',
+    options: [
+      { text: 'A qualidade da interpretação/representação de um jogo online.', type: 'S' },
+      { text: 'A originalidade dos recursos e a mecânica do jogo.', type: 'E' },
+    ],
+  },
+  {
+    id: 5,
+    text: 'Você é um jogador de um jogo online e quer lutar contra um dragão muito duro. Como você abordaria esse problema?',
+    options: [
+      { text: 'Conseguir um grande grupo de jogadores para matá-lo.', type: 'S' },
+      { text: 'Tentar uma variedade de armas e magia contra ele, até encontrar sua fraqueza.', type: 'E' },
+    ],
+  },
+  // ── S vs A ──────────────────────────────────────────────────────────────
+  {
+    id: 6,
     text: 'Do que você mais gosta das missões?',
     options: [
       { text: 'Envolver-se no enredo/estória.', type: 'S' },
@@ -51,7 +67,7 @@ export const questions: Question[] = [
     ],
   },
   {
-    id: 5,
+    id: 7,
     text: 'Como você prefere ser notado em um jogo online?',
     options: [
       { text: 'Popular.', type: 'S' },
@@ -59,16 +75,32 @@ export const questions: Question[] = [
     ],
   },
   {
-    id: 6,
+    id: 8,
     text: 'Qual você preferiria ter como jogador em um jogo online?',
     options: [
       { text: 'Um canal privado, sobre o qual você e seus amigos podem se comunicar.', type: 'S' },
       { text: 'Sua própria casa, valendo milhões de moedas de ouro.', type: 'A' },
     ],
   },
-  // E vs A (originais 4, 16, 18)
   {
-    id: 7,
+    id: 9,
+    text: 'Você está prestes a entrar em uma masmorra desconhecida e tem a escolha de mais uma pessoa para sua festa. Você traz:',
+    options: [
+      { text: 'Um bardo (contador de estórias), que é um bom amigo seu e ótimo para entreter você e seus amigos.', type: 'S' },
+      { text: 'Um mago, para identificar os itens que você encontra lá.', type: 'A' },
+    ],
+  },
+  {
+    id: 10,
+    text: 'Em um jogo online, você prefere ser conhecido como:',
+    options: [
+      { text: 'Alguém que pode correr de dois pontos no mundo e realmente sabe o que fazer.', type: 'S' },
+      { text: 'A pessoa com o melhor e mais exclusivo equipamento do jogo.', type: 'A' },
+    ],
+  },
+  // ── E vs A ──────────────────────────────────────────────────────────────
+  {
+    id: 11,
     text: 'Qual você gosta mais em um jogo online?',
     options: [
       { text: 'Obter as últimas novidades.', type: 'E' },
@@ -76,7 +108,7 @@ export const questions: Question[] = [
     ],
   },
   {
-    id: 8,
+    id: 12,
     text: 'Em um jogo online, uma nova área se abre. O que você espera mais?',
     options: [
       { text: 'Explorar a nova área e descobrir sua história.', type: 'E' },
@@ -84,16 +116,32 @@ export const questions: Question[] = [
     ],
   },
   {
-    id: 9,
+    id: 13,
     text: 'Você prefere:',
     options: [
       { text: 'Tornar-se um herói mais rápido que seus amigos.', type: 'A' },
       { text: 'Saber mais segredos do que seus amigos.', type: 'E' },
     ],
   },
-  // S vs K (originais 11, 13, 14)
   {
-    id: 10,
+    id: 14,
+    text: 'Você tende a:',
+    options: [
+      { text: 'Saber coisas que ninguém mais sabe.', type: 'E' },
+      { text: 'Ter itens que ninguém mais tem.', type: 'A' },
+    ],
+  },
+  {
+    id: 15,
+    text: 'O que você prefere fazer?',
+    options: [
+      { text: 'Resolver um enigma que ninguém mais resolveu.', type: 'E' },
+      { text: 'Chegar a um certo nível de experiência mais rápido do que qualquer outra pessoa.', type: 'A' },
+    ],
+  },
+  // ── S vs K ──────────────────────────────────────────────────────────────
+  {
+    id: 16,
     text: 'Você preferiria:',
     options: [
       { text: 'Derrotar seus inimigos.', type: 'K' },
@@ -101,7 +149,15 @@ export const questions: Question[] = [
     ],
   },
   {
-    id: 11,
+    id: 17,
+    text: 'O que você acha mais emocionante?',
+    options: [
+      { text: 'Um cenário bem interpretado.', type: 'S' },
+      { text: 'Uma batalha mortal.', type: 'K' },
+    ],
+  },
+  {
+    id: 18,
     text: 'Qual você gostaria de mais?',
     options: [
       { text: 'Ganhar um duelo com outro jogador.', type: 'K' },
@@ -109,16 +165,24 @@ export const questions: Question[] = [
     ],
   },
   {
-    id: 12,
+    id: 19,
     text: 'É melhor ser:',
     options: [
       { text: 'Temido.', type: 'K' },
       { text: 'Amado.', type: 'S' },
     ],
   },
-  // E vs K (originais 21, 23, 25)
   {
-    id: 13,
+    id: 20,
+    text: 'Você prefere:',
+    options: [
+      { text: 'Ouvir o que alguém tem a dizer.', type: 'S' },
+      { text: 'Mostrar a lâmina afiada do seu machado.', type: 'K' },
+    ],
+  },
+  // ── E vs K ──────────────────────────────────────────────────────────────
+  {
+    id: 21,
     text: 'Em um jogo online, prefere ser conhecido por:',
     options: [
       { text: 'Conhecimento.', type: 'E' },
@@ -126,7 +190,15 @@ export const questions: Question[] = [
     ],
   },
   {
-    id: 14,
+    id: 22,
+    text: 'Em um jogo online, você prefere:',
+    options: [
+      { text: 'Derrotar um inimigo.', type: 'K' },
+      { text: 'Explorar.', type: 'E' },
+    ],
+  },
+  {
+    id: 23,
     text: 'Se você está sozinho em uma área, você pensa:',
     options: [
       { text: 'É seguro explorar.', type: 'E' },
@@ -134,16 +206,24 @@ export const questions: Question[] = [
     ],
   },
   {
-    id: 15,
-    text: 'Você conhece um novo jogador. Você pensa neles como:',
+    id: 24,
+    text: 'Você soube que outro jogador está planejando sua morte. Você:',
     options: [
-      { text: 'Alguém que possa apreciar seu conhecimento do jogo.', type: 'E' },
-      { text: 'Como presa em potencial.', type: 'K' },
+      { text: 'Vai para uma área com a qual seu oponente não está familiarizado e se prepara.', type: 'E' },
+      { text: 'Ataca-o antes que ele ataque você.', type: 'K' },
     ],
   },
-  // A vs K (originais 26, 28, 30)
   {
-    id: 16,
+    id: 25,
+    text: 'Você conhece um novo jogador. Você pensa nele como:',
+    options: [
+      { text: 'Alguém que possa apreciar seu conhecimento do jogo.', type: 'E' },
+      { text: 'Uma presa em potencial.', type: 'K' },
+    ],
+  },
+  // ── A vs K ──────────────────────────────────────────────────────────────
+  {
+    id: 26,
     text: 'Em um jogo online, você prefere:',
     options: [
       { text: 'Ter uma espada duas vezes mais poderosa que qualquer outra no jogo.', type: 'A' },
@@ -151,7 +231,15 @@ export const questions: Question[] = [
     ],
   },
   {
-    id: 17,
+    id: 27,
+    text: 'Em um jogo online, você estaria mais propenso a se gabar:',
+    options: [
+      { text: 'Quantos outros jogadores você matou.', type: 'K' },
+      { text: 'Do seu equipamento.', type: 'A' },
+    ],
+  },
+  {
+    id: 28,
     text: 'Você prefere ter:',
     options: [
       { text: 'Um feitiço para danificar outros jogadores.', type: 'K' },
@@ -159,7 +247,15 @@ export const questions: Question[] = [
     ],
   },
   {
-    id: 18,
+    id: 29,
+    text: 'Você prefere receber como recompensa da missão:',
+    options: [
+      { text: 'Pontos de experiência.', type: 'A' },
+      { text: 'Uma varinha com 3 cargas de um feitiço que permite controlar outros jogadores, contra a vontade deles.', type: 'K' },
+    ],
+  },
+  {
+    id: 30,
     text: 'Ao jogar um videogame, é mais divertido:',
     options: [
       { text: 'Ter a maior pontuação na lista.', type: 'A' },
