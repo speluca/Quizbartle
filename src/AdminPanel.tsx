@@ -6,7 +6,7 @@ import {
 import { profiles, type BartleType } from './questions';
 import './AdminPanel.css';
 
-const ADMIN_PASSWORD = 'bartle2024';
+const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD as string;
 
 export function AdminPanel() {
   const [senha, setSenha] = useState('');

@@ -1,73 +1,59 @@
-# React + TypeScript + Vite
+# Teste de Bartle
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação web para aplicar o **Teste de Bartle** — questionário de 30 perguntas que classifica o perfil de jogador de cada participante em um dos quatro tipos do modelo de Richard Bartle:
 
-Currently, two official plugins are available:
+- 🤝 **Socializer** (Socializador)
+- 🏆 **Achiever** (Conquistador)
+- 🗺️ **Explorer** (Explorador)
+- ⚔️ **Killer** (Competidor)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Após o teste, o participante responde a uma avaliação pós-atividade (baseada na escala IMMS de relevância/satisfação, mais uma avaliação dos jogos utilizados em aula). Os resultados são salvos no Supabase e podem ser consultados e exportados em CSV por um painel administrativo.
 
-## React Compiler
+## Como funciona
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. **Entrada**: o participante informa um código de identificação (ex: `ALU-2024-001`).
+2. **Quiz**: responde 30 perguntas de escolha binária (5 perguntas para cada um dos 6 pares de perfis).
+3. **Resultado**: vê seu perfil dominante e a distribuição percentual entre os 4 perfis.
+4. **Avaliação**: preenche o questionário pós-atividade (escala de 1 a 5).
+5. **Painel admin**: acessível em `/?admin`, protegido por senha, permite recarregar os dados e exportar os resultados (teste de Bartle e avaliação) em CSV.
 
-## Expanding the ESLint configuration
+## Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vite.dev/) (build e dev server)
+- [Supabase](https://supabase.com/) (banco de dados / persistência das respostas)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Pré-requisitos
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Node.js 18+
+- Um projeto Supabase com duas tabelas:
+  - `bartle_respostas` — respostas do teste de Bartle (`codigo`, `timestamp`, `perfil_dominante`, `pct_e/a/s/k`, `pontos_e/a/s/k`, `q1`...`q30`)
+  - `bartle_avaliacao` — respostas da avaliação pós-atividade (`codigo`, `timestamp`, `imms_r1`...`imms_r4`, `imms_s1`...`imms_s4`, `jogo_explorador`, `jogo_conquistador`, `jogo_socializador`, `jogo_competidor`)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Configuração
+
+Copie `.env.example` para `.env` e preencha os valores (não versionado — peça as credenciais a quem administra o projeto):
+
+```bash
+cp .env.example .env
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Variáveis necessárias:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Variável | Descrição |
+|---|---|
+| `VITE_SUPABASE_URL` | URL do projeto Supabase |
+| `VITE_SUPABASE_ANON_KEY` | Chave anônima (anon/public) do Supabase |
+| `VITE_ADMIN_PASSWORD` | Senha de acesso ao painel administrativo (`/?admin`) |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Rodando o projeto
+
+```bash
+npm install       # instala as dependências
+npm run dev       # inicia o servidor de desenvolvimento (Vite)
+npm run build     # gera o build de produção em dist/
+npm run preview   # serve o build de produção localmente
+npm run lint      # roda o ESLint
 ```
+
+Acesse `http://localhost:5173` (padrão do Vite) para o teste, ou `http://localhost:5173/?admin` para o painel administrativo (senha definida em `VITE_ADMIN_PASSWORD`).
